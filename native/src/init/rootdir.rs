@@ -15,11 +15,11 @@ pub fn inject_magisk_rc(fd: RawFd, tmp_dir: &Utf8CStr) {
         r#"
 on post-fs-data
     start logd
-    umount /debug_ramdisk
-    umount /system/etc/init/hw/init.zygote64_32.rc
-    umount /system/etc/init/hw/init.zygote32.rc
-    umount /system/etc/init/hw/init.rc
-"#)
+    exec {0} 0 0 -- {1}/magisk --post-fs-data
+    exec {0} 0 0 -- {1}/magisk --stop
+"#,
+    "u:r:magisk:s0", tmp_dir
+    )
     .ok();
 
     mem::forget(file)
