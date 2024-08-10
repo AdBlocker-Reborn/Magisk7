@@ -18,6 +18,7 @@ on post-fs-data
     umount /debug_ramdisk
     umount /system/etc/init/hw/init.zygote64_32.rc
     umount /system/etc/init/hw/init.zygote32.rc
+    umount /system/etc/init/hw/init.rc
 "#)
     .ok();
 
