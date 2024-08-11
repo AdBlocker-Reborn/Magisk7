@@ -18,10 +18,7 @@ on post-fs-data
     umount /system/etc/init/hw/init.zygote64_32.rc
     umount /system/etc/init/hw/init.zygote32.rc
     umount /system/etc/init/hw/init.rc
-    mount none none /debug_ramdisk shared rec
-
-on persist.logd.size=4194304
-    umount /debug_ramdisk
+    mount none none /debug_ramdisk private rec
 "#)
     .ok();
 
