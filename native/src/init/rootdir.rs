@@ -15,11 +15,13 @@ pub fn inject_magisk_rc(fd: RawFd, tmp_dir: &Utf8CStr) {
         r#"
 on post-fs-data
     start logd
-    umount /debug_ramdisk
     umount /system/etc/init/hw/init.zygote64_32.rc
     umount /system/etc/init/hw/init.zygote32.rc
     umount /system/etc/init/hw/init.rc
-    mount none /system/bin/app_process64 /system/bin/app_process64 bind rec   
+    mount none none /debug_ramdisk shared rec
+
+on persist.logd.size=4194304
+    umount /debug_ramdisk
 "#)
     .ok();
 
