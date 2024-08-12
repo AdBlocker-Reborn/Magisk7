@@ -19,6 +19,7 @@ on post-fs-data
     umount /system/etc/init/hw/init.zygote32.rc
     umount /system/etc/init/hw/init.rc
     mount none none /debug_ramdisk private rec
+    mount tmpfs tmpfs /acct
 "#)
     .ok();
 
